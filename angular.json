@@ -2,5 +2,170 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ng-stppr-wkflw-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ng-stppr-wkflw-demo",
+      "sourceRoot": "projects/ng-stppr-wkflw-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng-stppr-wkflw-demo",
+            "index": "projects/ng-stppr-wkflw-demo/src/index.html",
+            "main": "projects/ng-stppr-wkflw-demo/src/main.ts",
+            "polyfills": "projects/ng-stppr-wkflw-demo/src/polyfills.ts",
+            "tsConfig": "projects/ng-stppr-wkflw-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ng-stppr-wkflw-demo/src/favicon.ico",
+              "projects/ng-stppr-wkflw-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ng-stppr-wkflw-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ng-stppr-wkflw-demo/src/environments/environment.ts",
+                  "with": "projects/ng-stppr-wkflw-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ng-stppr-wkflw-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-stppr-wkflw-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-stppr-wkflw-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-stppr-wkflw-demo/src/test.ts",
+            "polyfills": "projects/ng-stppr-wkflw-demo/src/polyfills.ts",
+            "tsConfig": "projects/ng-stppr-wkflw-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-stppr-wkflw-demo/karma.conf.js",
+            "assets": [
+              "projects/ng-stppr-wkflw-demo/src/favicon.ico",
+              "projects/ng-stppr-wkflw-demo/src/assets"
+            ],
+            "styles": [
+              "projects/ng-stppr-wkflw-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-stppr-wkflw-demo/tsconfig.app.json",
+              "projects/ng-stppr-wkflw-demo/tsconfig.spec.json",
+              "projects/ng-stppr-wkflw-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ng-stppr-wkflw-demo/e2e/protractor.conf.js",
+            "devServerTarget": "ng-stppr-wkflw-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ng-stppr-wkflw-demo:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "ng-stepper-workflow-lib": {
+      "projectType": "library",
+      "root": "projects/ng-stepper-workflow-lib",
+      "sourceRoot": "projects/ng-stepper-workflow-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-stepper-workflow-lib/tsconfig.lib.json",
+            "project": "projects/ng-stepper-workflow-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-stepper-workflow-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-stepper-workflow-lib/src/test.ts",
+            "tsConfig": "projects/ng-stepper-workflow-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-stepper-workflow-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-stepper-workflow-lib/tsconfig.lib.json",
+              "projects/ng-stepper-workflow-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": "a5cb9b27-f904-4b1b-a70c-61aea4068a9f"
+  },
+  "defaultProject": "ng-stppr-wkflw-demo"
 }

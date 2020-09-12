@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-stepper-workflow-lib": [
+        "dist/ng-stepper-workflow-lib/ng-stepper-workflow-lib",
+        "dist/ng-stepper-workflow-lib"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
